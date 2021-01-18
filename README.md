@@ -1,1 +1,1 @@
-# SeataTest
+# Seata Demo config
