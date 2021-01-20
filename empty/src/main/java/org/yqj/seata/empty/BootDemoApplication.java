@@ -1,4 +1,4 @@
-package org.yqj.seata.empty;
+package org.yqj.seata.basic;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

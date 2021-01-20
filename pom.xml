@@ -25,7 +25,8 @@
     </properties>
 
     <modules>
-        <module>empty</module>
+<!--        <module>empty</module>-->
+        <module>basic</module>
     </modules>
 
     <dependencyManagement>
