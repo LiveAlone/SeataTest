@@ -40,7 +40,7 @@ public class Business {
         orderService.reset(null, null);
 
         //init seata; only once
-        String applicationId = "api";
+        String applicationId = "basic";
         String txServiceGroup = "my_test_tx_group";
         TMClient.init(applicationId, txServiceGroup);
         RMClient.init(applicationId, txServiceGroup);
