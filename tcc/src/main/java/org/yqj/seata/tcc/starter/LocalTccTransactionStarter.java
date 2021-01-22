@@ -5,7 +5,6 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.Assert;
 import org.yqj.seata.tcc.ApplicationKeeper;
-import org.yqj.seata.tcc.action.ResultHolder;
 import org.yqj.seata.tcc.action.impl.TccActionOneImpl;
 import org.yqj.seata.tcc.action.impl.TccActionTwoImpl;
 import org.yqj.seata.tcc.service.TccTransactionService;
@@ -58,22 +57,20 @@ public class LocalTccTransactionStarter {
         transactionCommitDemo();
 
         //分布式事务回滚demo
-        transactionRollbackDemo();
+//        transactionRollbackDemo();
 
         new ApplicationKeeper(applicationContext).keep();
     }
 
     private static void transactionCommitDemo() throws InterruptedException {
         String txId = tccTransactionService.doTransactionCommit();
+        System.out.println("transaction commit demo finish.");
+
         System.out.println(txId);
         Assert.isTrue(StringUtils.isNotBlank(txId), "事务开启失败");
 
-        Thread.sleep(1000L);
+        Thread.sleep(10000L);
 
-        Assert.isTrue("T".equals(ResultHolder.getActionOneResult(txId)), "tccActionOne commit failed");
-        Assert.isTrue("T".equals(ResultHolder.getActionTwoResult(txId)), "tccActionTwo commit failed");
-
-        System.out.println("transaction commit demo finish.");
     }
 
     private static void transactionRollbackDemo() throws InterruptedException {
@@ -85,10 +82,7 @@ public class LocalTccTransactionStarter {
             Assert.isTrue(true, "分布式事务异常回滚");
         }
         String txId = (String) map.get("xid");
-        Thread.sleep(1000L);
-
-        Assert.isTrue("R".equals(ResultHolder.getActionOneResult(txId)), "tccActionOne commit failed");
-        Assert.isTrue("R".equals(ResultHolder.getActionTwoResult(txId)), "tccActionTwo commit failed");
+        Thread.sleep(10000L);
 
         System.out.println("transaction rollback demo finish.");
     }

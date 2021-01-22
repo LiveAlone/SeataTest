@@ -1,7 +1,6 @@
 package org.yqj.seata.tcc.action.impl;
 
 import io.seata.rm.tcc.api.BusinessActionContext;
-import org.yqj.seata.tcc.action.ResultHolder;
 import org.yqj.seata.tcc.action.TccActionTwo;
 
 /**
@@ -22,7 +21,6 @@ public class TccActionTwoImpl implements TccActionTwo {
     public boolean commit(BusinessActionContext actionContext) {
         String xid = actionContext.getXid();
         System.out.println("TccActionTwo commit, xid:" + xid);
-        ResultHolder.setActionTwoResult(xid, "T");
         return true;
     }
 
@@ -30,7 +28,6 @@ public class TccActionTwoImpl implements TccActionTwo {
     public boolean rollback(BusinessActionContext actionContext) {
         String xid = actionContext.getXid();
         System.out.println("TccActionTwo rollback, xid:" + xid);
-        ResultHolder.setActionTwoResult(xid, "R");
         return true;
     }
 
