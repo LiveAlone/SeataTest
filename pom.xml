@@ -30,7 +30,8 @@
     <modules>
 <!--        <module>empty</module>-->
 <!--        <module>basic</module>-->
-        <module>tcc</module>
+<!--        <module>tcc</module>-->
+        <module>saga</module>
     </modules>
 
     <dependencyManagement>
@@ -47,7 +48,6 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-
 
             <!-- guava -->
             <dependency>
